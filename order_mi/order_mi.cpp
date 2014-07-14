@@ -99,14 +99,18 @@ public:
 			m_apRichEdit[2]->AppendText(m_apRichEdit[0]->GetLine(0, 100));
 
 		for (i = 1; i < nUserLineCount; i++) {
-			strContext += m_apRichEdit[0]->GetLine(i, 100);
+			CDuiString strText = m_apRichEdit[0]->GetLine(i, 100);
+			if (strText != _T("\r"))
+				strContext += m_apRichEdit[0]->GetLine(i, 100);
 		}
 		m_apRichEdit[0]->SetText(strContext);
 
 		strContext = _T("");
 		if (nAddrLineCount > 1 && (eStatus == E_BOOK_SUCCESS))
 			for (i = 1; i < nAddrLineCount; i++) {
-				strContext += m_apRichEdit[1]->GetLine(i, 100);
+				CDuiString strText = m_apRichEdit[0]->GetLine(i, 100);
+				if (strText != _T("\r"))
+					strContext += m_apRichEdit[0]->GetLine(i, 100);
 			}
 
 		if (eStatus == E_BOOK_SUCCESS)
@@ -125,6 +129,11 @@ public:
 		CDuiString strContext;
 		
 		strContext = m_apRichEdit[nIndex]->GetSelText();
+
+		// no select any char, filling first line to buffer
+		if (strContext == _T("")) {
+			strContext = m_apRichEdit[nIndex]->GetLine(0, 200);
+		}
 
 		if (OpenClipboard(NULL)) {
 			EmptyClipboard();
@@ -214,6 +223,15 @@ public:
 			}
 			else if (msg.pSender->GetName() == _T("edit4")) {
 				FillBufferToCopy(3, msg.pSender->GetName());
+			}
+		}
+		else if (msg.sType == _T("setfocus")) {
+			SIZE sz = {0, 0};
+			if (msg.pSender->GetName() == _T("edit1")) {
+				m_apRichEdit[0]->SetScrollPos(sz);
+			}
+			else if (msg.pSender->GetName() == _T("edit2")) {
+				m_apRichEdit[1]->SetScrollPos(sz);
 			}
 		}
 
