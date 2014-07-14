@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="1024,768" sizebox="4,4,4,4" caption="0,0,0,30" roundcorner="4,4">
+	<VerticalLayout name="VerticalLayoutMain" >
+		<!--标题区--------------------------------------------------------------->
+		<HorizontalLayout name="HorizontalLayoutCaption" height="30" bkcolor="#FF0080FF" bkcolor2="#FF00C0FF">
+			<VerticalLayout name="VerticalLayoutUI2" height="0" >
+				<Label name="caption" text="小米预约" />
+			</VerticalLayout>
+			<VerticalLayout name="VerticalLayoutCaption" width="77" height="20">
+				<!--标题栏按钮-->
+				<Button name="minbtn" float="true" pos="8,2,0,0" width="23" height="21" align="center" normalimage="file='SysBtn\MinNormal.bmp'" hotimage="file='SysBtn\MinFocus.bmp'" />
+				<Button name="restorebtn" float="true" pos="30,2,0,0" width="23" height="21" align="center" normalimage="file='SysBtn\StoreNormal.bmp'" hotimage="file='SysBtn\StoreFocus.bmp'" />
+				<Button name="maxbtn" float="true" pos="30,2,0,0" width="23" height="21" align="center" normalimage="file='SysBtn\MaxNormal.bmp'" hotimage="file='SysBtn\MaxFocus.bmp'" />
+				<Button name="closebtn" normalimage="file='SysBtn\CloseNormal.bmp'" hotimage="file='SysBtn\CloseFocus.bmp'" float="true" pos="52,2,0,0" width="23" height="21" align="center" />
+			</VerticalLayout>
+		</HorizontalLayout>
+		<!--标题区--------------------------------------------------------------->
+		<!--用户区--------------------------------------------------------------->
+		<HorizontalLayout name="HorizontalLayoutUser" bkcolor="#FF0080FF" >
+			<!--IE区域--------------------------------------------------------------->
+			<VerticalLayout name="VerticalLayoutIE" bkcolor="#FF228888" >
+				<HorizontalLayout name="HorizontalLayoutIEOP" height="30" >
+					<Button name="back" text="后退" float="true" pos="5,5,0,0" width="40" height="20" bkcolor="#FF00FFFF"/>
+					<Button name="foward" text="前进" float="true" pos="46,5,0,0" width="40" height="20" bkcolor="#FF00FFFF"/>
+					<Button name="refresh" text="刷新" float="true" pos="87,5,0,0" width="40" height="20" bkcolor="#FF00FFFF"/>
+					<Button name="homepage" text="主页" float="true" pos="128,5,0,0" width="40" height="20" bkcolor="#FF00FFFF"/>
+					<Edit name="addEdit" float="true" pos="180,5,0,0" width="250" height="20" bkcolor="#FFFFFFFF"/>
+					<Button name="goto" text="转到" float="true" pos="432,5,0,0" width="40" height="20" bkcolor="#FFFFFF00"/>
+					<Button name="btnRange30" text="30%" float="true" pos="500,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
+					<Button name="btnRange50" text="50%" float="true" pos="531,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
+					<Button name="btnRange80" text="80%" float="true" pos="562,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
+					<Button name="btnRange100" text="100%" float="true" pos="593,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
+				</HorizontalLayout>
+
+				<WebBrowser name="IE" clsid="{8856F961-340A-11D0-A96B-00C04FD705A2}" delaycreate="false" padding="2,2,2,2" homepage="www.mi.com" autonavi="true"/>
+
+			</VerticalLayout>
+			<!--编辑区，包含四个从上往下的小编辑区-->
+			<VerticalLayout name="VerticalLayoutEdit" bkcolor="#FF0080FF" width="400">
+				<HorizontalLayout name="HorizontalLayoutUserEdit1" bkcolor="#FF0080FF" >
+					<RichEdit name="edit1" pos="1,1,0,0" padding="2,2,2,2" menu="true" tooltip="帐号" bordervisible="true" bordersize="1" float="false" bkcolor="#FFFFFFFF" vscrollbar="true" hscrollbar="true" autovscroll="true" autohscroll="true"/>
+				</HorizontalLayout>
+				<HorizontalLayout name="HorizontalLayoutUserEdit2" bkcolor="#FF0080FF" >
+					<RichEdit name="edit2" pos="1,1,0,0" padding="2,2,2,2" menu="true" tooltip="地址" bordervisible="true" bordersize="1" float="false" bkcolor="#FFFFFFFF" vscrollbar="true" hscrollbar="true" autovscroll="true" autohscroll="true"/>
+				</HorizontalLayout>
+				<HorizontalLayout name="HorizontalLayoutUserEdit3" bkcolor="#FF0080FF" >
+					<RichEdit name="edit3" pos="1,1,0,0" padding="2,2,2,2" menu="true" tooltip="黑号" bordervisible="true" bordersize="1" float="false" bkcolor="#FFFFFFFF" vscrollbar="true" hscrollbar="true" autovscroll="true" autohscroll="true"/>
+				</HorizontalLayout>
+				<HorizontalLayout name="HorizontalLayoutUserEdit4" bkcolor="#FF0080FF" >
+					<RichEdit name="edit4" pos="1,1,0,0" padding="2,2,2,2" menu="true" tooltip="已预约" bordervisible="true" bordersize="1" float="false" bkcolor="#FFFFFFFF" vscrollbar="true" hscrollbar="true" autovscroll="true" autohscroll="true"/>
+				</HorizontalLayout>
+				<HorizontalLayout name="HorizontalLayoutButton" height="80" align="center" bkcolor="#FF228888" padding="2,2,2,2">
+					<Label name="text1" text="已预约：" float="true" pos="10,10,0,0" width="50" height="20" align="center" bkcolor="#FFFFFFFF" />
+					<Label name="textBooked" float="true" pos="60,10,0,0" width="50" height="20" align="center" bkcolor="#FFFFFFFF" />
+					<Button name="textBookedClear" text="清除" float="true" pos="120,10,0,0" width="50" height="20" align="center" bkcolor="#FFFFFFFF"/>
+					<Button name="btnSuccess" text="预约成功" float="true" pos="40,40,0,0" width="80" height="30" align="center" bkcolor="#FFFFFFFF"/>
+					<Button name="btnblack" text="黑号！" float="true" pos="150,40,0,0" width="80" height="30" align="center" bkcolor="#FFFF0000"/>
+					<Button name="btnSuccessOld" text="老号预约" float="true" pos="250,40,0,0" width="80" height="30" align="center" bkcolor="#FFFFFFFF"/>
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+		<!--用户区-------------------------------------------------------------------->
+	</VerticalLayout>
+</Window>
