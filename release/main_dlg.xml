@@ -26,9 +26,9 @@
 					<Button name="homepage" text="主页" float="true" pos="128,5,0,0" width="40" height="20" bkcolor="#FF00FFFF"/>
 					<Edit name="addEdit" float="true" pos="180,5,0,0" width="250" height="20" bkcolor="#FFFFFFFF"/>
 					<Button name="goto" text="转到" float="true" pos="432,5,0,0" width="40" height="20" bkcolor="#FFFFFF00"/>
-					<Button name="btnRange30" text="30%" float="true" pos="500,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
-					<Button name="btnRange50" text="50%" float="true" pos="531,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
-					<Button name="btnRange80" text="80%" float="true" pos="562,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
+					<Button name="order" text="预约" float="true" pos="500,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
+					<Button name="login" text="登陆" float="true" pos="531,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
+					<Button name="btnRange50" text="50%" float="true" pos="562,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
 					<Button name="btnRange100" text="100%" float="true" pos="593,5,0,0" width="30" height="20" bkcolor="#FF00FFFF"/>
 				</HorizontalLayout>
 

@@ -38,6 +38,40 @@ public:
 	CWebBrowserUI* m_pWebBrowser;
 };
 
+CDuiString GetLoginPage()
+{
+	TCHAR szBuf[MAX_PATH];
+	CDuiString strText = CPaintManagerUI::GetInstancePath();
+	strText = strText + _T("\\") + _T("Setting.ini");
+
+	GetPrivateProfileString(_T("Setting"), _T("LoginPage"), _T("https://account.xiaomi.com/pass/serviceLogin?callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttp%253A%252F%252Fwww.mi.com%26sign%3DMjMyMGJhNjNmZmM2NTc0YWM4NzdkN2IzMjNlZjhmMzhhODAxMDZiNg%2C%2C&sid=mi_eshop"),
+		szBuf, MAX_PATH, strText);
+
+	strText = szBuf;
+
+	if (strText == _T(""))
+		strText = _T("https://account.xiaomi.com/pass/serviceLogin?callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttp%253A%252F%252Fwww.mi.com%26sign%3DMjMyMGJhNjNmZmM2NTc0YWM4NzdkN2IzMjNlZjhmMzhhODAxMDZiNg%2C%2C&sid=mi_eshop");
+
+	return strText;
+}
+
+CDuiString GetOrderPage()
+{
+	TCHAR szBuf[MAX_PATH];
+	CDuiString strText = CPaintManagerUI::GetInstancePath();
+	strText = strText + _T("\\") + _T("Setting.ini");
+
+	GetPrivateProfileString(_T("Setting"), _T("OrderPage"), _T("http://a.hd.mi.com/productv2/book/a/4"),
+		szBuf, MAX_PATH, strText);
+
+	strText = szBuf;
+
+	if (strText == _T(""))
+		strText = _T("http://a.hd.mi.com/productv2/book/a/4");
+
+	return strText;
+}
+
 class COrderMIFrameWnd : public WindowImplBase
 {
 public:
@@ -108,9 +142,9 @@ public:
 		strContext = _T("");
 		if (nAddrLineCount > 1 && (eStatus == E_BOOK_SUCCESS))
 			for (i = 1; i < nAddrLineCount; i++) {
-				CDuiString strText = m_apRichEdit[0]->GetLine(i, 100);
+				CDuiString strText = m_apRichEdit[1]->GetLine(i, 100);
 				if (strText != _T("\r"))
-					strContext += m_apRichEdit[0]->GetLine(i, 100);
+					strContext += m_apRichEdit[1]->GetLine(i, 100);
 			}
 
 		if (eStatus == E_BOOK_SUCCESS)
@@ -185,11 +219,15 @@ public:
 				if (m_pWebBrowser->GetHomePage() != _T(""))
 					m_pWebBrowser->Navigate2(m_pWebBrowser->GetHomePage());
 			}
-			else if (msg.pSender->GetName() == _T("btnRange30")) {
-				SetWindowRange(30);
+			else if (msg.pSender->GetName() == _T("order")) {
+				CDuiString strAddr = GetOrderPage();
+				if (strAddr != _T(""))
+					m_pWebBrowser->Navigate2(strAddr);
 			}
-			else if (msg.pSender->GetName() == _T("btnRange50")) {
-				SetWindowRange(50);
+			else if (msg.pSender->GetName() == _T("login")) {
+				CDuiString strAddr = GetLoginPage();
+				if (strAddr != _T(""))
+					m_pWebBrowser->Navigate2(strAddr);
 			}
 			else if (msg.pSender->GetName() == _T("btnRange80")) {
 				SetWindowRange(80);
